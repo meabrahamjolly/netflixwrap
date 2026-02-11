@@ -121,9 +121,9 @@ export class Wrapped implements OnInit, OnDestroy {
       topMovies: [
         { rank: 1, title: 'Avatar 4', image: 'https://image.tmdb.org/t/p/w200/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg' },
         { rank: 2, title: 'Extraction 3', image: 'https://m.media-amazon.com/images/M/MV5BZGQwNDdhODAtY2Y0Ni00YzFhLTk1OGUtY2RkMDAzNzBmZjAxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg' },
-        { rank: 3, title: 'Dune: Part Three', image: 'https://image.tmdb.org/t/p/w200/cZ0d3i6Pn8kQxhePZJjvZ7lGej.jpg' },
-        { rank: 4, title: 'The Batman II', image: 'https://image.tmdb.org/t/p/w200/74xTEgt7R36Fpooo50x9T2Zum8b.jpg' },
-        { rank: 5, title: 'Spider-Man 4', image: 'https://image.tmdb.org/t/p/w200/3lBDg3i6Pn8kQxhePZJjvZ7lGej.jpg' }
+        { rank: 3, title: 'Dune: Part Three', image: 'https://m.media-amazon.com/images/M/MV5BNGY4NDkyNTEtNTE4Ny00NjI0LTgzYTEtN2UyZDRlODFlNTVlXkEyXkFqcGc@._V1_QL75_UX500_CR0,0,500,281_.jpg' },
+        { rank: 4, title: 'The Batman II', image: 'https://static.wixstatic.com/media/c1cd62_d561fe431ccd4e12961e0b5562e7d736~mv2.jpg/v1/fill/w_568,h_298,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c1cd62_d561fe431ccd4e12961e0b5562e7d736~mv2.jpg' },
+        { rank: 5, title: 'Spider-Man 4', image: 'https://i.ytimg.com/vi/LHUU36LBjrk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB0glW-WXyv4QsdCByvDuRN7Tk5M' }
       ],
       topSeries: [
         { rank: 1, title: 'Stranger Things 5', image: 'https://image.tmdb.org/t/p/w200/49WJfeN0moxb9IPfGn8AIqMGskD.jpg' },

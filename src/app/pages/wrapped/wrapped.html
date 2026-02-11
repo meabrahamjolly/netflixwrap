@@ -172,39 +172,92 @@
 
     <!-- Genre & Personality -->
     @if (wrappedData[0].genreStats) {
-    <div class="section personality">
-        <div class="personality-badge">
-            {{ wrappedData[0].genreStats.personalityType }}
-        </div>
-        <h3>You are a {{ wrappedData[0].genreStats.topGenre }} Fanatic.</h3>
-        <p>Surprise Genre: {{ wrappedData[0].genreStats.surpriseGenre }}</p>
+    <div class="section personality-section">
+        <div class="glass-card personality-card animate-up">
+            <div class="personality-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    <circle cx="12" cy="12" r="9" stroke-dasharray="2 4" />
+                </svg>
+            </div>
+            <div class="badge">{{ wrappedData[0].genreStats.personalityType }}</div>
+            <h2>The Sci-Fi Visionary</h2>
+            <p class="subtitle">You explored new worlds this year.</p>
 
-        <!-- Simple visual representation of pie chart -->
-        <div class="genre-bars">
-            @for (g of wrappedData[0].genreStats.pieChart; track g.label) {
-            <div class="g-bar" [style.width.%]="g.value" [style.background]="g.color"></div>
-            }
-        </div>
-        <div class="genre-legend">
-            @for (g of wrappedData[0].genreStats.pieChart; track g.label) {
-            <span><span class="dot" [style.background]="g.color"></span>{{ g.label }} {{ g.value }}%</span>
-            }
+            <div class="genre-insights">
+                <div class="genre-stat">
+                    <span class="label">Top Genre</span>
+                    <span class="value">{{ wrappedData[0].genreStats.topGenre }}</span>
+                </div>
+                <div class="genre-stat">
+                    <span class="label">Surprise</span>
+                    <span class="value">{{ wrappedData[0].genreStats.surpriseGenre }}</span>
+                </div>
+            </div>
+
+            <div class="genre-visualization">
+                <div class="progress-stack">
+                    @for (g of wrappedData[0].genreStats.pieChart; track g.label) {
+                    <div class="progress-layer" [style.width.%]="g.value" [style.background]="g.color"
+                        [attr.data-label]="g.label">
+                        <span class="tooltip">{{ g.label }} {{ g.value }}%</span>
+                    </div>
+                    }
+                </div>
+                <div class="visualization-legend">
+                    @for (g of wrappedData[0].genreStats.pieChart; track g.label) {
+                    <div class="legend-pill">
+                        <span class="dot" [style.background]="g.color"></span>
+                        <span class="name">{{ g.label }}</span>
+                        <span class="pct">{{ g.value }}%</span>
+                    </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
     }
 
     <!-- Share Card -->
-    <div class="section share-section">
-        <div class="share-card">
-            <div class="logo">NETFLIX WRAPPED 2025</div>
-            <div class="user-info">
-                <div class="big-stat">{{ wrappedData[0].totalHours }} Hrs</div>
-                <div class="sub-stat">Top Genre: {{ wrappedData[0].genreStats?.topGenre }}</div>
-                <div class="sub-stat">Personality: {{ wrappedData[0].genreStats?.personalityType }}</div>
+    <div class="section share-report-section">
+        <div class="share-card-container animate-up">
+            <div class="wrapped-share-card">
+                <div class="card-bg-glow"></div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="logo-text">NETFLIX <span>WRAPPED</span></span>
+                        <span class="year-label">2025</span>
+                    </div>
+
+                    <div class="main-stats">
+                        <div class="big-number">
+                            <span class="val">{{ wrappedData[0].totalHours }}</span>
+                            <span class="unit">HOURS</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-pills">
+                        <div class="pill">
+                            <span class="p-label">TOP GENRE</span>
+                            <span class="p-val">{{ wrappedData[0].genreStats?.topGenre }}</span>
+                        </div>
+                        <div class="pill highlight">
+                            <span class="p-label">PERSONALITY</span>
+                            <span class="p-val">{{ wrappedData[0].genreStats?.personalityType }}</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="tag">#NetflixWrapped</span>
+                        <div class="netflix-red-bar"></div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-note">#NetflixWrapped</div>
+            <button class="btn-download">
+                <span class="icon">⬇</span>
+                Download Share Card
+            </button>
         </div>
-        <button class="btn primary big">Download Share Card ⬇</button>
     </div>
 
     <div class="footer">

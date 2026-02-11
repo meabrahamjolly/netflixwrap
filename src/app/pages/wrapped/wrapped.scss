@@ -654,6 +654,8 @@
                     .bar-fill {
                         height: 100%;
                         transition: width 1s ease;
+                        -webkit-background-clip: padding-box;
+                        background-clip: padding-box;
                     }
 
                     .bar-value {
@@ -825,29 +827,327 @@
             }
         }
 
-        &.personality {
-            background: linear-gradient(135deg, #4B0082, #0000FF);
-            color: white;
-            border-radius: 20px;
-            padding: 60px;
-            margin-top: 60px;
+        &.personality-section {
+            padding: 100px 20px;
 
-            .icon {
-                font-size: 4rem;
-                margin-bottom: 20px;
-                animation: bounce 2s infinite;
-            }
-
-            h3 {
-                font-size: 2.5rem;
-                margin-bottom: 10px;
-            }
-
-            p {
-                font-size: 1.2rem;
+            .personality-card {
+                padding: 50px 40px;
+                text-align: center;
                 max-width: 600px;
                 margin: 0 auto;
-                line-height: 1.6;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+
+                .personality-icon {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0 auto 30px;
+                    background: radial-gradient(circle, rgba(229, 9, 20, 0.2), transparent);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #E50914;
+                    filter: drop-shadow(0 0 15px rgba(229, 9, 20, 0.5));
+                    animation: float 4s ease-in-out infinite;
+
+                    svg {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+
+                .badge {
+                    display: inline-block;
+                    padding: 8px 20px;
+                    background: rgba(229, 9, 20, 0.1);
+                    color: #E50914;
+                    border-radius: 30px;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    letter-spacing: 2px;
+                    margin-bottom: 20px;
+                    border: 1px solid rgba(229, 9, 20, 0.2);
+                }
+
+                h2 {
+                    font-size: 3rem;
+                    font-weight: 900;
+                    margin-bottom: 10px;
+                    letter-spacing: -1.5px;
+                }
+
+                .subtitle {
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 1.2rem;
+                    margin-bottom: 40px;
+                }
+
+                .genre-insights {
+                    display: flex;
+                    justify-content: center;
+                    gap: 40px;
+                    margin-bottom: 50px;
+
+                    .genre-stat {
+                        display: flex;
+                        flex-direction: column;
+
+                        .label {
+                            font-size: 0.75rem;
+                            text-transform: uppercase;
+                            color: rgba(255, 255, 255, 0.4);
+                            letter-spacing: 1px;
+                            margin-bottom: 5px;
+                        }
+
+                        .value {
+                            font-size: 1.8rem;
+                            font-weight: 900;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .genre-visualization {
+                    .progress-stack {
+                        height: 12px;
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 6px;
+                        display: flex;
+                        overflow: hidden;
+                        margin-bottom: 30px;
+                        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+
+                        .progress-layer {
+                            height: 100%;
+                            position: relative;
+                            transition: transform 0.3s;
+                            cursor: pointer;
+
+                            &:hover {
+                                transform: scaleY(1.5);
+                                z-index: 10;
+
+                                .tooltip {
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+
+                            .tooltip {
+                                position: absolute;
+                                bottom: 20px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                background: #fff;
+                                color: #000;
+                                padding: 5px 10px;
+                                border-radius: 4px;
+                                font-size: 0.75rem;
+                                font-weight: bold;
+                                white-space: nowrap;
+                                opacity: 0;
+                                visibility: hidden;
+                                transition: 0.2s;
+                                pointer-events: none;
+                            }
+                        }
+                    }
+
+                    .visualization-legend {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 12px;
+
+                        .legend-pill {
+                            padding: 6px 12px;
+                            background: rgba(255, 255, 255, 0.05);
+                            border-radius: 20px;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            font-size: 0.85rem;
+
+                            .dot {
+                                width: 8px;
+                                height: 8px;
+                                border-radius: 50%;
+                            }
+
+                            .pct {
+                                font-weight: 900;
+                                opacity: 0.6;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.share-report-section {
+            padding: 100px 20px;
+            background: radial-gradient(circle at bottom, #1a0000 0%, #000 70%);
+
+            .share-card-container {
+                max-width: 400px;
+                margin: 0 auto;
+                text-align: center;
+
+                .wrapped-share-card {
+                    width: 100%;
+                    aspect-ratio: 9/16;
+                    background: #111;
+                    border-radius: 20px;
+                    position: relative;
+                    overflow: hidden;
+                    margin-bottom: 30px;
+                    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+
+                    .card-bg-glow {
+                        position: absolute;
+                        top: -50%;
+                        left: -50%;
+                        width: 200%;
+                        height: 200%;
+                        background: radial-gradient(circle at 30% 30%, #E50914 0%, transparent 40%),
+                            radial-gradient(circle at 70% 70%, #4B0082 0%, transparent 40%),
+                            radial-gradient(circle at 50% 50%, #000 0%, transparent 60%);
+                        opacity: 0.6;
+                        animation: rotate 20s linear infinite;
+                    }
+
+                    .card-content {
+                        position: relative;
+                        height: 100%;
+                        padding: 40px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        z-index: 2;
+
+                        .card-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .logo-text {
+                                font-weight: 900;
+                                font-size: 1.2rem;
+                                letter-spacing: 2px;
+                                color: #fff;
+
+                                span {
+                                    color: #E50914;
+                                }
+                            }
+
+                            .year-label {
+                                background: #fff;
+                                color: #000;
+                                padding: 2px 8px;
+                                border-radius: 4px;
+                                font-weight: 900;
+                                font-size: 0.8rem;
+                            }
+                        }
+
+                        .main-stats {
+                            .big-number {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: start;
+                                line-height: 1;
+
+                                .val {
+                                    font-size: 8rem;
+                                    font-weight: 950;
+                                    background: linear-gradient(to bottom, #fff, #888);
+                                    -webkit-background-clip: text;
+                                    background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    letter-spacing: -6px;
+                                }
+
+                                .unit {
+                                    font-size: 1.5rem;
+                                    font-weight: 900;
+                                    letter-spacing: 4px;
+                                    color: #E50914;
+                                }
+                            }
+                        }
+
+                        .stats-pills {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+
+                            .pill {
+                                text-align: left;
+
+                                .p-label {
+                                    color: rgba(255, 255, 255, 0.5);
+                                    font-size: 0.7rem;
+                                    font-weight: 800;
+                                    display: block;
+                                }
+
+                                .p-val {
+                                    color: #fff;
+                                    font-size: 1.4rem;
+                                    font-weight: 900;
+                                }
+
+                                &.highlight .p-val {
+                                    color: #E50914;
+                                }
+                            }
+                        }
+
+                        .card-footer {
+                            text-align: left;
+
+                            .tag {
+                                font-weight: 700;
+                                font-size: 0.9rem;
+                                opacity: 0.6;
+                            }
+
+                            .netflix-red-bar {
+                                width: 40px;
+                                height: 4px;
+                                background: #E50914;
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .btn-download {
+                    width: 100%;
+                    padding: 16px;
+                    border-radius: 40px;
+                    background: #fff;
+                    color: #000;
+                    border: none;
+                    font-weight: 900;
+                    font-size: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    transition: transform 0.3s, box-shadow 0.3s;
+
+                    &:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+                    }
+                }
             }
         }
     }
@@ -862,8 +1162,9 @@
             background: transparent;
             border: 2px solid white;
             color: white;
-            border-radius: 30px;
+            border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
             transition: all 0.3s;
 
             &:hover {
@@ -874,18 +1175,66 @@
     }
 }
 
-.animate-up {
-    animation: slideUp 0.8s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
+/* Base Glassmorphism Class */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
 }
 
-.delay-1 {
-    animation-delay: 0.2s;
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.delay-2 {
-    animation-delay: 0.4s;
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes fadeIn {
