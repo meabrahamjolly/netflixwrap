@@ -26,13 +26,16 @@
   }
 
   .logo {
-    color: #e50914;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
     margin-right: 40px;
     cursor: pointer;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 35px;
+      /* Adjust based on logo aspect ratio */
+      width: auto;
+    }
   }
 
   .nav-links {
@@ -56,6 +59,16 @@
         &:hover {
           color: #b3b3b3;
         }
+      }
+
+      &.wrapped-link a {
+        background: linear-gradient(45deg, #e50914, #ff5f6d);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
     }
   }

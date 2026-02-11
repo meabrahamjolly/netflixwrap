@@ -1,0 +1,31 @@
+<div class="story-container" [style.background]="stories[currentIndex()].bg">
+    <div class="progress-bars">
+        @for (story of stories; track story.id; let i = $index) {
+        <div class="bar-container">
+            <div class="bar" [class.active]="i === currentIndex()" [class.completed]="i < currentIndex()"
+                [style.width.%]="i === currentIndex() ? progress() : (i < currentIndex() ? 100 : 0)">
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="close-btn" (click)="close()">×</div>
+
+    <div class="story-content" (click)="next()">
+        <div class="tap-area left" (click)="prev(); $event.stopPropagation()"></div>
+        <div class="tap-area right" (click)="next(); $event.stopPropagation()"></div>
+
+        <div class="content-inner animate-in">
+            <h1>{{ stories[currentIndex()].title }}</h1>
+            <h2>{{ stories[currentIndex()].subtitle }}</h2>
+
+            @if (stories[currentIndex()].description) {
+            <p>{{ stories[currentIndex()].description }}</p>
+            }
+
+            @if (stories[currentIndex()].image) {
+            <img [src]="stories[currentIndex()].image" class="story-image">
+            }
+        </div>
+    </div>
+</div>

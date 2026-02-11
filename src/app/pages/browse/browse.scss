@@ -1,0 +1,16 @@
+.browse-container {
+    padding: 100px 4% 50px;
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        row-gap: 50px;
+    }
+}

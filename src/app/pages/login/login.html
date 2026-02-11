@@ -1,0 +1,36 @@
+<div class="login-wrapper">
+    <div class="login-header">
+        <img src="logo-name-text.png" alt="NetflixWrap" class="logo">
+    </div>
+
+    <div class="login-body">
+        <div class="login-box">
+            <h2>Sign In</h2>
+            <form (ngSubmit)="onLogin()">
+                <div class="input-group">
+                    <input type="email" [(ngModel)]="email" name="email" placeholder="Email or phone number" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="submit-btn">Sign In</button>
+
+                <div class="support">
+                    <div class="remember">
+                        <input type="checkbox" id="rememberMe" checked>
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#">Need help?</a>
+                </div>
+            </form>
+
+            <div class="signup-now">
+                New to Netflix? <a href="#">Sign up now.</a>
+            </div>
+
+            <div class="recaptcha">
+                This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="#">Learn more.</a>
+            </div>
+        </div>
+    </div>
+</div>

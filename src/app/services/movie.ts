@@ -40,16 +40,22 @@ export class MovieService {
       description: 'An anthology series exploring a twisted, high-tech multiverse where humanity\'s greatest innovations and darkest instincts collide.'
     },
     {
-        id: 5,
-        title: 'Money Heist',
-        thumbnail: 'https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg',
-        description: 'To carry out the biggest heist in history, a mysterious man called The Professor recruits a band of eight robbers who have a single characteristic: none of them has anything to lose.'
+      id: 5,
+      title: 'Money Heist',
+      thumbnail: 'https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg',
+      description: 'To carry out the biggest heist in history, a mysterious man called The Professor recruits a band of eight robbers who have a single characteristic: none of them has anything to lose.'
     },
     {
-        id: 6,
-        title: 'Dark',
-        thumbnail: 'https://image.tmdb.org/t/p/w500/apbrbWs8M9lyOpJYu5WXRPFufxZ.jpg',
-        description: 'A family saga with a supernatural twist, set in a German town, where the disappearance of two young children exposes the relationships among four families.'
+      id: 6,
+      title: 'Dark',
+      thumbnail: 'https://image.tmdb.org/t/p/w500/apbrbWs8M9lyOpJYu5WXRPFufxZ.jpg',
+      description: 'A family saga with a supernatural twist, set in a German town, where the disappearance of two young children exposes the relationships among four families.'
+    },
+    {
+      id: 7,
+      title: 'Squid Game',
+      thumbnail: 'https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
+      description: 'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games. Inside, a tempting prize awaits with deadly high stakes.'
     }
   ];
 
@@ -66,6 +72,6 @@ export class MovieService {
   }
 
   getActionMovies(): Observable<Movie[]> {
-      return of(this.mockMovies.slice(0, 4));
+    return of(this.mockMovies.slice(0, 4));
   }
 }

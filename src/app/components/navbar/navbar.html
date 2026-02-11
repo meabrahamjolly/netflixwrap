@@ -1,12 +1,15 @@
 <nav class="navbar" [class.scrolled]="isScrolled">
     <div class="left-container">
-        <a href="#" class="logo">NETFLIXWRAP</a>
+        <a href="#" class="logo">
+            <img src="logo-name-text.png" alt="NetflixWrap">
+        </a>
         <ul class="nav-links">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">TV Shows</a></li>
-            <li><a href="#">Movies</a></li>
-            <li><a href="#">New & Popular</a></li>
-            <li><a href="#">My List</a></li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+            <li routerLinkActive="active"><a routerLink="/tv-shows">TV Shows</a></li>
+            <li routerLinkActive="active"><a routerLink="/movies">Movies</a></li>
+            <li routerLinkActive="active"><a routerLink="/new-popular">New & Popular</a></li>
+            <li routerLinkActive="active"><a routerLink="/my-list">My List</a></li>
+            <li class="wrapped-link" routerLinkActive="active"><a routerLink="/wrapped">2024 Wrapped</a></li>
             <li><a href="#">Browse by Languages</a></li>
         </ul>
     </div>
@@ -28,7 +31,7 @@
             </svg>
         </div>
         <div class="profile-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="User">
+            <img src="logo.png " alt="User">
             <span class="caret"></span>
         </div>
     </div>

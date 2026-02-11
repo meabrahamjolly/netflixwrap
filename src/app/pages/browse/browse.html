@@ -1,0 +1,10 @@
+<div class="browse-container">
+    <h1>{{ title }}</h1>
+    <div class="grid">
+        @if (movies$ | async; as movies) {
+        @for (movie of movies; track movie.id) {
+        <app-movie-card [movie]="movie"></app-movie-card>
+        }
+        }
+    </div>
+</div>

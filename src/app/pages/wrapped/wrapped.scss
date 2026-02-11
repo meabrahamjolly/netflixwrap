@@ -1,0 +1,125 @@
+.story-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    /* Above navbar */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .progress-bars {
+        display: flex;
+        gap: 5px;
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+
+        .bar-container {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+
+            .bar {
+                height: 100%;
+                background: white;
+                width: 0;
+                transition: width 0.05s linear;
+
+                &.completed {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        font-size: 40px;
+        cursor: pointer;
+        z-index: 20;
+        line-height: 1;
+    }
+
+    .story-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+
+        .tap-area {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 30%;
+            z-index: 5;
+
+            &.left {
+                left: 0;
+            }
+
+            &.right {
+                right: 0;
+            }
+        }
+
+        .content-inner {
+            z-index: 1;
+            padding: 20px;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease-out;
+
+            h1 {
+                font-size: 5rem;
+                font-weight: 900;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                line-height: 0.9;
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: normal;
+                margin-bottom: 20px;
+                opacity: 0.9;
+            }
+
+            p {
+                font-size: 1.5rem;
+                opacity: 0.8;
+            }
+
+            .story-image {
+                width: 80%;
+                max-width: 300px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                margin-top: 30px;
+                transform: rotate(-5deg);
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
