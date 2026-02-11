@@ -495,6 +495,62 @@
             }
         }
 
+        &.binge-stats {
+            h3 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+
+            .binge-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+
+                .binge-card {
+                    background: #1a1a1a;
+                    padding: 25px;
+                    border-radius: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border: 1px solid #333;
+                    transition: transform 0.3s;
+
+                    &:hover {
+                        transform: translateY(-5px);
+                        background: #222;
+                    }
+
+                    .emoji {
+                        font-size: 2.5rem;
+                        margin-bottom: 10px;
+                    }
+
+                    .stat-val {
+                        font-size: 1.8rem;
+                        font-weight: 800;
+                        color: #fff;
+                        text-align: center;
+                    }
+
+                    .stat-val.small {
+                        font-size: 1.2rem;
+                    }
+
+                    .stat-lbl {
+                        color: #999;
+                        font-size: 0.9rem;
+                        text-transform: uppercase;
+                        margin-top: 5px;
+                    }
+
+                    &.full {
+                        grid-column: span 3;
+                    }
+                }
+            }
+        }
+
         &.habits {
             background: #0a0a0a;
             border-radius: 20px;
@@ -546,6 +602,104 @@
             .insight {
                 font-style: italic;
                 opacity: 0.7;
+            }
+
+            .habits-row {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 30px;
+                flex-wrap: wrap;
+                gap: 20px;
+
+                .habit-item {
+                    text-align: center;
+                    background: #0f0f0f;
+                    padding: 20px;
+                    border-radius: 10px;
+                    min-width: 150px;
+
+                    .label {
+                        display: block;
+                        color: #777;
+                        font-size: 0.9rem;
+                        margin-bottom: 5px;
+                        text-transform: uppercase;
+                    }
+
+                    .val {
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                    }
+
+                    .val.highlight {
+                        color: #E50914;
+                    }
+                }
+            }
+        }
+
+        &.split-list-section {
+            width: 100%;
+            max-width: 900px;
+
+            h3 {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+
+            .split-container {
+                display: flex;
+                gap: 40px;
+
+                .list-column {
+                    flex: 1;
+
+                    h4 {
+                        text-align: left;
+                        font-size: 1.5rem;
+                        margin-bottom: 20px;
+                        padding-left: 10px;
+                        border-left: 4px solid #E50914;
+                    }
+
+                    .top-list-grid {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
+
+                        .list-item {
+                            display: flex;
+                            align-items: center;
+                            background: #1e1e1e;
+                            padding: 10px 15px;
+                            border-radius: 8px;
+
+                            .rank {
+                                font-size: 1.5rem;
+                                font-weight: 900;
+                                color: #555;
+                                width: 30px;
+                                margin-right: 15px;
+                            }
+
+                            .thumb {
+                                width: 40px;
+                                height: 60px;
+                                object-fit: cover;
+                                border-radius: 4px;
+                                margin-right: 15px;
+                            }
+
+                            .title {
+                                font-size: 1rem;
+                                font-weight: bold;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -599,6 +753,7 @@
 
         &.personality {
             background: linear-gradient(135deg, #4B0082, #0000FF);
+            color: white;
             border-radius: 20px;
             padding: 60px;
             margin-top: 60px;

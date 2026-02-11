@@ -40,79 +40,144 @@
     <!-- Key Stats -->
     <div class="section stats-row">
         <div class="stat-card">
-            <div class="value">850</div>
-            <div class="label">Hours Watched</div>
+            <div class="value">
+                @if(wrappedData[0].detailedStats?.totalMinutes) {
+                {{ (wrappedData[0].detailedStats?.totalMinutes || 0) / 60 | number:'1.0-0' }}
+                } @else {
+                {{ wrappedData[0].totalHours }}
+                }
+            </div>
+            <div class="label">Total Hours</div>
         </div>
         <div class="stat-card">
-            <div class="value">142</div>
+            <div class="value">{{ wrappedData[0].totalTitles }}</div>
             <div class="label">Titles Played</div>
         </div>
         <div class="stat-card">
-            <div class="value">2019</div>
+            <div class="value">{{ wrappedData[0].joinDate }}</div>
             <div class="label">Member Since</div>
         </div>
     </div>
 
-    <!-- Charts / Habits -->
+    <!-- Binge Behavior -->
+    @if (wrappedData[0].bingeStats) {
+    <div class="section binge-stats">
+        <h3>Binge Behavior</h3>
+        <div class="binge-grid">
+            <div class="binge-card">
+                <span class="emoji">🍿</span>
+                <span class="stat-val">{{ wrappedData[0].bingeStats?.longestSession }}</span>
+                <span class="stat-lbl">Longest Session</span>
+            </div>
+            <div class="binge-card">
+                <span class="emoji">🌙</span>
+                <span class="stat-val">{{ wrappedData[0].bingeStats?.lateNightCount }}</span>
+                <span class="stat-lbl">Late Nights (>2AM)</span>
+            </div>
+            <div class="binge-card">
+                <span class="emoji">📅</span>
+                <span class="stat-val">{{ wrappedData[0].bingeStats?.weekendMarathons }}</span>
+                <span class="stat-lbl">Weekend Marathons</span>
+            </div>
+            <div class="binge-card full">
+                <span class="emoji">🔁</span>
+                <span class="stat-val small">{{ wrappedData[0].bingeStats?.mostRewatched }}</span>
+                <span class="stat-lbl">Most Rewatched</span>
+            </div>
+        </div>
+    </div>
+    }
+
+    <!-- Habits -->
+    @if (wrappedData[0].detailedStats) {
     <div class="section habits">
         <h3>Watching Habits</h3>
-        <div class="chart-wrapper">
-            <div class="bar-group">
-                <span class="bar-label">Series</span>
-                <div class="bar-bg">
-                    <div class="bar-fill" style="width: 70%; background: #FF0055"></div>
-                </div>
-                <span class="bar-value">70%</span>
+        <div class="habits-row">
+            <div class="habit-item">
+                <span class="label">Active Month</span>
+                <span class="val highlight">{{ wrappedData[0].detailedStats?.activeMonth }}</span>
             </div>
-            <div class="bar-group">
-                <span class="bar-label">Movies</span>
-                <div class="bar-bg">
-                    <div class="bar-fill" style="width: 30%; background: #0000FF"></div>
-                </div>
-                <span class="bar-value">30%</span>
+            <div class="habit-item">
+                <span class="label">Favorite Day</span>
+                <span class="val">{{ wrappedData[0].detailedStats?.activeDay }}</span>
             </div>
-        </div>
-        <p class="insight">You're a binge-watcher at heart.</p>
-    </div>
-
-    <!-- Top 5 List -->
-    <div class="section top-list-section">
-        <h3>Your Top 5</h3>
-        <div class="top-list-grid">
-            <!-- Using mock data directly for demo report -->
-            <div class="list-item">
-                <span class="rank">1</span>
-                <img src="https://image.tmdb.org/t/p/w200/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" class="thumb">
-                <span class="title">Avatar 4</span>
-            </div>
-            <div class="list-item">
-                <span class="rank">2</span>
-                <img src="https://image.tmdb.org/t/p/w200/49WJfeN0moxb9IPfGn8AIqMGskD.jpg" class="thumb">
-                <span class="title">Stranger Things 5</span>
-            </div>
-            <div class="list-item">
-                <span class="rank">3</span>
-                <img src="https://image.tmdb.org/t/p/w200/cZ0d3i6Pn8kQxhePZJjvZ7lGej.jpg" class="thumb">
-                <span class="title">The Witcher</span>
-            </div>
-            <div class="list-item">
-                <span class="rank">4</span>
-                <img src="https://image.tmdb.org/t/p/w200/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg" class="thumb">
-                <span class="title">Cyberpunk 2077</span>
-            </div>
-            <div class="list-item">
-                <span class="rank">5</span>
-                <img src="https://image.tmdb.org/t/p/w200/3lBDg3i6Pn8kQxhePZJjvZ7lGej.jpg" class="thumb">
-                <span class="title">Dark</span>
+            <div class="habit-item">
+                <span class="label">Time of Day</span>
+                <span class="val">{{ wrappedData[0].detailedStats?.dayTime }}</span>
             </div>
         </div>
     </div>
+    }
 
-    <!-- Personality -->
+    <!-- Split Top Lists -->
+    <div class="section split-list-section">
+        <h3>Your Favorites</h3>
+        <div class="split-container">
+            <!-- Top Movies -->
+            <div class="list-column">
+                <h4>Top Movies</h4>
+                <div class="top-list-grid">
+                    @for (item of wrappedData[0].topMovies; track item.rank) {
+                    <div class="list-item">
+                        <span class="rank">{{ item.rank }}</span>
+                        <img [src]="item.image" class="thumb">
+                        <span class="title">{{ item.title }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Top Series -->
+            <div class="list-column">
+                <h4>Top Series</h4>
+                <div class="top-list-grid">
+                    @for (item of wrappedData[0].topSeries; track item.rank) {
+                    <div class="list-item">
+                        <span class="rank">{{ item.rank }}</span>
+                        <img [src]="item.image" class="thumb">
+                        <span class="title">{{ item.title }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Genre & Personality -->
+    @if (wrappedData[0].genreStats) {
     <div class="section personality">
-        <div class="icon">🎭</div>
-        <h3>The Sci-Fi Visionary</h3>
-        <p>You love exploring new worlds and future tech. 65% of your time was spent in Sci-Fi.</p>
+        <div class="personality-badge">
+            {{ wrappedData[0].genreStats?.personalityType }}
+        </div>
+        <h3>You are a {{ wrappedData[0].genreStats?.topGenre }} Fanatic.</h3>
+        <p>Surprise Genre: {{ wrappedData[0].genreStats?.surpriseGenre }}</p>
+
+        <!-- Simple visual representation of pie chart -->
+        <div class="genre-bars">
+            @for (g of wrappedData[0].genreStats?.pieChart; track g.label) {
+            <div class="g-bar" [style.width.%]="g.value" [style.background]="g.color"></div>
+            }
+        </div>
+        <div class="genre-legend">
+            @for (g of wrappedData[0].genreStats?.pieChart; track g.label) {
+            <span><span class="dot" [style.background]="g.color"></span>Data: {{ g.label }} {{ g.value }}%</span>
+            }
+        </div>
+    </div>
+    }
+
+    <!-- Share Card -->
+    <div class="section share-section">
+        <div class="share-card">
+            <div class="logo">NETFLIX WRAPPED 2025</div>
+            <div class="user-info">
+                <div class="big-stat">{{ wrappedData[0].totalHours }} Hrs</div>
+                <div class="sub-stat">Top Genre: {{ wrappedData[0].genreStats?.topGenre }}</div>
+                <div class="sub-stat">Personality: {{ wrappedData[0].genreStats?.personalityType }}</div>
+            </div>
+            <div class="footer-note">#NetflixWrapped</div>
+        </div>
+        <button class="btn primary big">Download Share Card ⬇</button>
     </div>
 
     <div class="footer">

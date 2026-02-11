@@ -18,7 +18,7 @@ export class MovieService {
       id: 1,
       title: 'Stranger Things',
       thumbnail: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
-      banner: 'https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYkJunUsc0I.jpg',
+      banner: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
       description: 'When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.'
     },
     {

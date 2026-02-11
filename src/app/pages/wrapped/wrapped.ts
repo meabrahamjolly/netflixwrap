@@ -29,6 +29,27 @@ interface Story {
   }[];
 }
 
+interface BingeStats {
+  longestSession: string; // "8 hrs"
+  lateNightCount: number; // "14 nights past 2AM"
+  weekendMarathons: number; // "12 weekends"
+  mostRewatched: string; // "The Office"
+}
+
+interface DetailedStats {
+  activeMonth: string;
+  activeDay: string; // "Saturday"
+  dayTime: 'Night Owl' | 'Early Bird';
+  totalMinutes: number;
+}
+
+interface GenreStats {
+  topGenre: string;
+  pieChart: { label: string; value: number; color: string; }[];
+  surpriseGenre: string;
+  personalityType: string; // "The Sci-Fi Visionary"
+}
+
 interface YearData {
   year: number;
   themeColor: string;
@@ -38,6 +59,12 @@ interface YearData {
   totalTitles: number;
   joinDate: string;
   mostActiveMonth: string;
+  // New Advanced Stats
+  bingeStats?: BingeStats;
+  detailedStats?: DetailedStats;
+  genreStats?: GenreStats;
+  topMovies?: { rank: number; title: string; image: string; }[];
+  topSeries?: { rank: number; title: string; image: string; }[];
 }
 
 @Component({
@@ -63,6 +90,44 @@ export class Wrapped implements OnInit, OnDestroy {
       totalTitles: 142,
       joinDate: '2019',
       mostActiveMonth: 'December',
+      // New Stats Data
+      bingeStats: {
+        longestSession: '12 hours',
+        lateNightCount: 45,
+        weekendMarathons: 18,
+        mostRewatched: 'Stranger Things'
+      },
+      detailedStats: {
+        activeMonth: 'December',
+        activeDay: 'Saturday',
+        dayTime: 'Night Owl',
+        totalMinutes: 51000
+      },
+      genreStats: {
+        topGenre: 'Sci-Fi',
+        surpriseGenre: 'K-Drama',
+        personalityType: 'The Sci-Fi Visionary',
+        pieChart: [
+          { label: 'Sci-Fi', value: 45, color: '#FF0055' },
+          { label: 'Action', value: 25, color: '#0000FF' },
+          { label: 'Drama', value: 20, color: '#8E2DE2' },
+          { label: 'Comedy', value: 10, color: '#F37335' }
+        ]
+      },
+      topMovies: [
+        { rank: 1, title: 'Avatar 4', image: 'https://image.tmdb.org/t/p/w200/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg' },
+        { rank: 2, title: 'Extraction 3', image: 'https://m.media-amazon.com/images/M/MV5BZGQwNDdhODAtY2Y0Ni00YzFhLTk1OGUtY2RkMDAzNzBmZjAxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg' },
+        { rank: 3, title: 'Dune: Part Three', image: 'https://image.tmdb.org/t/p/w200/cZ0d3i6Pn8kQxhePZJjvZ7lGej.jpg' },
+        { rank: 4, title: 'The Batman II', image: 'https://image.tmdb.org/t/p/w200/74xTEgt7R36Fpooo50x9T2Zum8b.jpg' },
+        { rank: 5, title: 'Spider-Man 4', image: 'https://image.tmdb.org/t/p/w200/3lBDg3i6Pn8kQxhePZJjvZ7lGej.jpg' }
+      ],
+      topSeries: [
+        { rank: 1, title: 'Stranger Things 5', image: 'https://image.tmdb.org/t/p/w200/49WJfeN0moxb9IPfGn8AIqMGskD.jpg' },
+        { rank: 2, title: 'Wednesday S2', image: 'https://image.tmdb.org/t/p/w200/9PFonBhy4cQy7Jz20NpMygczOkv.jpg' },
+        { rank: 3, title: 'The Witcher S5', image: 'https://img.etimg.com/thumb/width-1600,height-900,imgsize-1160551,resizemode-75,msid-109426403/magazines/panache/the-witcher-season-5-confirmed-as-the-last-chapter-by-netflix.jpg' },
+        { rank: 4, title: 'One Piece S2', image: 'https://image.tmdb.org/t/p/w200/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg' },
+        { rank: 5, title: 'Black Mirror S7', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS546YkH7AB5hn_hsiFgKuk7wD4vdDhwMwFMg&s' }
+      ],
       stories: [
         { id: 1, type: 'intro', title: '2025 Wrapped', subtitle: 'The future of streaming.', bg: '#FF0055' },
         {
@@ -98,9 +163,9 @@ export class Wrapped implements OnInit, OnDestroy {
           topList: [
             { rank: 1, title: 'Avatar 4', image: 'https://image.tmdb.org/t/p/w200/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg' },
             { rank: 2, title: 'Stranger Things 5', image: 'https://image.tmdb.org/t/p/w200/49WJfeN0moxb9IPfGn8AIqMGskD.jpg' },
-            { rank: 3, title: 'The Witcher', image: 'https://image.tmdb.org/t/p/w200/cZ0d3i6Pn8kQxhePZJjvZ7lGej.jpg' },
+            { rank: 3, title: 'The Witcher', image: 'https://img.etimg.com/thumb/width-1600,height-900,imgsize-1160551,resizemode-75,msid-109426403/magazines/panache/the-witcher-season-5-confirmed-as-the-last-chapter-by-netflix.jpg' },
             { rank: 4, title: 'Cyberpunk 2077', image: 'https://image.tmdb.org/t/p/w200/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg' },
-            { rank: 5, title: 'Dark', image: 'https://image.tmdb.org/t/p/w200/3lBDg3i6Pn8kQxhePZJjvZ7lGej.jpg' }
+            { rank: 5, title: 'Dark', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0ZHZSa2JH6P0MDUjVBJ0iEO5_K1yYjcd3Ow&s' }
           ]
         },
         {
