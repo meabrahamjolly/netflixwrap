@@ -64,49 +64,76 @@
     <div class="section binge-stats">
         <h3>Binge Behavior</h3>
         <div class="binge-grid">
-            <div class="binge-card">
-                <span class="emoji">🍿</span>
-                <span class="stat-val">{{ wrappedData[0].bingeStats?.longestSession }}</span>
+            <div class="binge-card animate-up">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                        <circle cx="12" cy="12" r="5" />
+                    </svg>
+                </div>
+                <span class="stat-val">{{ wrappedData[0].bingeStats.longestSession }}</span>
                 <span class="stat-lbl">Longest Session</span>
             </div>
-            <div class="binge-card">
-                <span class="emoji">🌙</span>
-                <span class="stat-val">{{ wrappedData[0].bingeStats?.lateNightCount }}</span>
+            <div class="binge-card animate-up delay-1">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </div>
+                <span class="stat-val">{{ wrappedData[0].bingeStats.lateNightCount }}</span>
                 <span class="stat-lbl">Late Nights (>2AM)</span>
             </div>
-            <div class="binge-card">
-                <span class="emoji">📅</span>
-                <span class="stat-val">{{ wrappedData[0].bingeStats?.weekendMarathons }}</span>
+            <div class="binge-card animate-up delay-2">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                        <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
+                    </svg>
+                </div>
+                <span class="stat-val">{{ wrappedData[0].bingeStats.weekendMarathons }}</span>
                 <span class="stat-lbl">Weekend Marathons</span>
             </div>
-            <div class="binge-card full">
-                <span class="emoji">🔁</span>
-                <span class="stat-val small">{{ wrappedData[0].bingeStats?.mostRewatched }}</span>
-                <span class="stat-lbl">Most Rewatched</span>
+            <div class="binge-card full clickable animate-up delay-3"
+                (click)="openMovieDetail(wrappedData[0].bingeStats.mostRewatched, 'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg')">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="17 1 21 5 17 9" />
+                        <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                        <polyline points="7 23 3 19 7 15" />
+                        <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                    </svg>
+                </div>
+                <div class="rewatch-content">
+                    <span class="stat-val small">{{ wrappedData[0].bingeStats.mostRewatched }}</span>
+                    <span class="stat-lbl">Most Rewatched</span>
+                </div>
             </div>
         </div>
     </div>
     }
 
-    <!-- Habits -->
+    <!-- Watching Habits -->
     @if (wrappedData[0].detailedStats) {
-    <div class="section habits">
-        <h3>Watching Habits</h3>
-        <div class="habits-row">
+    <section class="habits-section">
+        <div class="habit-row">
             <div class="habit-item">
-                <span class="label">Active Month</span>
-                <span class="val highlight">{{ wrappedData[0].detailedStats?.activeMonth }}</span>
+                <span class="label">Most Active Month</span>
+                <span class="val highlight">{{ wrappedData[0].detailedStats.activeMonth }}</span>
             </div>
             <div class="habit-item">
                 <span class="label">Favorite Day</span>
-                <span class="val">{{ wrappedData[0].detailedStats?.activeDay }}</span>
+                <span class="val">{{ wrappedData[0].detailedStats.activeDay }}</span>
             </div>
             <div class="habit-item">
                 <span class="label">Time of Day</span>
-                <span class="val">{{ wrappedData[0].detailedStats?.dayTime }}</span>
+                <span class="val">{{ wrappedData[0].detailedStats.dayTime }}</span>
             </div>
         </div>
-    </div>
+    </section>
     }
 
     <!-- Split Top Lists -->
@@ -147,20 +174,20 @@
     @if (wrappedData[0].genreStats) {
     <div class="section personality">
         <div class="personality-badge">
-            {{ wrappedData[0].genreStats?.personalityType }}
+            {{ wrappedData[0].genreStats.personalityType }}
         </div>
-        <h3>You are a {{ wrappedData[0].genreStats?.topGenre }} Fanatic.</h3>
-        <p>Surprise Genre: {{ wrappedData[0].genreStats?.surpriseGenre }}</p>
+        <h3>You are a {{ wrappedData[0].genreStats.topGenre }} Fanatic.</h3>
+        <p>Surprise Genre: {{ wrappedData[0].genreStats.surpriseGenre }}</p>
 
         <!-- Simple visual representation of pie chart -->
         <div class="genre-bars">
-            @for (g of wrappedData[0].genreStats?.pieChart; track g.label) {
+            @for (g of wrappedData[0].genreStats.pieChart; track g.label) {
             <div class="g-bar" [style.width.%]="g.value" [style.background]="g.color"></div>
             }
         </div>
         <div class="genre-legend">
-            @for (g of wrappedData[0].genreStats?.pieChart; track g.label) {
-            <span><span class="dot" [style.background]="g.color"></span>Data: {{ g.label }} {{ g.value }}%</span>
+            @for (g of wrappedData[0].genreStats.pieChart; track g.label) {
+            <span><span class="dot" [style.background]="g.color"></span>{{ g.label }} {{ g.value }}%</span>
             }
         </div>
     </div>

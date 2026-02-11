@@ -50,16 +50,15 @@ interface GenreStats {
   personalityType: string; // "The Sci-Fi Visionary"
 }
 
-interface YearData {
+export interface YearData {
   year: number;
   themeColor: string;
-  stories: Story[];
-  // Global year stats
   totalHours: number;
   totalTitles: number;
   joinDate: string;
   mostActiveMonth: string;
-  // New Advanced Stats
+  stories: Story[];
+  // Advanced stats
   bingeStats?: BingeStats;
   detailedStats?: DetailedStats;
   genreStats?: GenreStats;
