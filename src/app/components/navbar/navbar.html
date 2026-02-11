@@ -14,14 +14,18 @@
         </ul>
     </div>
     <div class="right-container">
-        <div class="icon-btn search-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                class="search-svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M13 11C13 13.7614 10.7614 16 8 16C5.23858 16 3 13.7614 3 11C3 8.23858 5.23858 6 8 6C10.7614 6 13 8.23858 13 11ZM14.071 14.071C15.922 12.22 17.071 9.66 17.071 6.828C17.071 3.996 15.922 1.436 14.071 -0.414C12.22 -2.264 9.66 -3.414 6.828 -3.414C3.996 -3.414 1.436 -2.264 -0.414 -0.414C-2.264 1.436 -3.414 3.996 -3.414 6.828C-3.414 9.66 -2.264 12.22 -0.414 14.071C1.436 15.922 3.996 17.071 6.828 17.071C9.66 17.071 12.22 15.922 14.071 14.071ZM17 11C17 15.9706 12.9706 20 8 20C3.02944 20 -1 15.9706 -1 11C-1 6.02944 3.02944 2 8 2C12.9706 2 17 6.02944 17 11Z"
-                    fill="white" />
-                <path d="M17 17L21 21" stroke="white" stroke-width="2" stroke-linecap="square" />
-            </svg>
+        <div class="search-box" [class.open]="isSearchOpen">
+            <div class="icon-btn search-icon" (click)="toggleSearch()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="search-svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M13 11C13 13.7614 10.7614 16 8 16C5.23858 16 3 13.7614 3 11C3 8.23858 5.23858 6 8 6C10.7614 6 13 8.23858 13 11ZM14.071 14.071C15.922 12.22 17.071 9.66 17.071 6.828C17.071 3.996 15.922 1.436 14.071 -0.414C12.22 -2.264 9.66 -3.414 6.828 -3.414C3.996 -3.414 1.436 -2.264 -0.414 -0.414C-2.264 1.436 -3.414 3.996 -3.414 6.828C-3.414 9.66 -2.264 12.22 -0.414 14.071C1.436 15.922 3.996 17.071 6.828 17.071C9.66 17.071 12.22 15.922 14.071 14.071ZM17 11C17 15.9706 12.9706 20 8 20C3.02944 20 -1 15.9706 -1 11C-1 6.02944 3.02944 2 8 2C12.9706 2 17 6.02944 17 11Z"
+                        fill="white" />
+                    <path d="M17 17L21 21" stroke="white" stroke-width="2" stroke-linecap="square" />
+                </svg>
+            </div>
+            <input type="text" placeholder="Titles, people, genres" (keyup.enter)="onSearch($event)"
+                [class.visible]="isSearchOpen">
         </div>
         <span class="kid-text">Children</span>
         <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -32,8 +36,7 @@
         <div class="profile-menu" (mouseenter)="isDropdownOpen = true" (mouseleave)="isDropdownOpen = false"
             (click)="toggleDropdown()">
             <div class="profile-container">
-                <img src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
-                    alt="User" class="profile-img">
+                <img src="logo.png" alt="User" class="profile-img">
                 <span class="caret"></span>
             </div>
 
@@ -42,8 +45,7 @@
                 <div class="arrow-up"></div>
                 <div class="menu-group">
                     <div class="menu-item">
-                        <img src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
-                            alt="Kid">
+                        <img src="logo.png" alt="Kid">
                         <span>Kids</span>
                     </div>
                     <div class="menu-item">

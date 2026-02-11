@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class Navbar {
   isScrolled = false;
   isDropdownOpen = false;
+  isSearchOpen = false;
   router = inject(Router);
 
   @HostListener('window:scroll', [])
@@ -21,6 +22,19 @@ export class Navbar {
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleSearch() {
+    this.isSearchOpen = !this.isSearchOpen;
+  }
+
+  onSearch(event: any) {
+    const query = event.target.value;
+    if (query && query.trim().length > 0) {
+      console.log('Searching for:', query);
+      // For now, just log or maybe navigate to a search page if we had one
+      // this.router.navigate(['/search'], { queryParams: { q: query } });
+    }
   }
 
   logout() {

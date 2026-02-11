@@ -49,6 +49,7 @@ interface YearData {
 })
 export class Wrapped implements OnInit, OnDestroy {
   selectedYear = signal<number | null>(null);
+  viewMode = signal<'selection' | 'story' | 'report'>('selection');
   currentStories = signal<Story[]>([]);
   currentIndex = signal(0);
   progress = signal(0);
@@ -273,7 +274,9 @@ export class Wrapped implements OnInit, OnDestroy {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // Start with selection screen, no auto start
+    // Default to 2025 Report Mode
+    this.selectYear(2025);
+    this.viewMode.set('report');
   }
 
   selectYear(year: number) {
@@ -282,8 +285,24 @@ export class Wrapped implements OnInit, OnDestroy {
       this.selectedYear.set(year);
       this.currentStories.set(data.stories);
       this.currentIndex.set(0);
-      this.startStory();
+      // If manually selecting, default to story mode unless it's initial load handled in ngOnInit
+      if (this.viewMode() !== 'report') {
+        this.startStory();
+        this.viewMode.set('story');
+      }
     }
+  }
+
+  switchToStory() {
+    this.viewMode.set('story');
+    this.currentIndex.set(0);
+    this.startStory();
+  }
+
+  switchToSelection() {
+    this.stopStory();
+    this.selectedYear.set(null);
+    this.viewMode.set('selection');
   }
 
   closeSelection() {
@@ -293,6 +312,7 @@ export class Wrapped implements OnInit, OnDestroy {
   returnToSelection() {
     this.stopStory();
     this.selectedYear.set(null);
+    this.viewMode.set('selection');
   }
 
   ngOnDestroy() {

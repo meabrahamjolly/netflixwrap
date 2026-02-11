@@ -1,4 +1,4 @@
-@if (!selectedYear()) {
+@if (viewMode() === 'selection') {
 <div class="selection-container">
     <div class="close-selector" (click)="closeSelection()">
         <span class="icon">×</span>
@@ -16,6 +16,107 @@
             <span class="label">View Wrap</span>
         </div>
         }
+    </div>
+</div>
+} @else if (viewMode() === 'report') {
+<div class="report-container">
+    <div class="report-nav">
+        <div class="logo">NETFLIX WRAPPED</div>
+        <div class="actions">
+            <button class="btn secondary" (click)="switchToStory()">
+                <span class="icon">▶</span> Play Stories
+            </button>
+            <button class="btn primary" (click)="closeSelection()">Go to Home</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="section hero">
+        <h1 class="animate-up">2025 Wrapped</h1>
+        <h2 class="animate-up delay-1">Welcome back, Abraham</h2>
+        <p class="animate-up delay-2">You lived in the cloud this year.</p>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="section stats-row">
+        <div class="stat-card">
+            <div class="value">850</div>
+            <div class="label">Hours Watched</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">142</div>
+            <div class="label">Titles Played</div>
+        </div>
+        <div class="stat-card">
+            <div class="value">2019</div>
+            <div class="label">Member Since</div>
+        </div>
+    </div>
+
+    <!-- Charts / Habits -->
+    <div class="section habits">
+        <h3>Watching Habits</h3>
+        <div class="chart-wrapper">
+            <div class="bar-group">
+                <span class="bar-label">Series</span>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: 70%; background: #FF0055"></div>
+                </div>
+                <span class="bar-value">70%</span>
+            </div>
+            <div class="bar-group">
+                <span class="bar-label">Movies</span>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: 30%; background: #0000FF"></div>
+                </div>
+                <span class="bar-value">30%</span>
+            </div>
+        </div>
+        <p class="insight">You're a binge-watcher at heart.</p>
+    </div>
+
+    <!-- Top 5 List -->
+    <div class="section top-list-section">
+        <h3>Your Top 5</h3>
+        <div class="top-list-grid">
+            <!-- Using mock data directly for demo report -->
+            <div class="list-item">
+                <span class="rank">1</span>
+                <img src="https://image.tmdb.org/t/p/w200/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" class="thumb">
+                <span class="title">Avatar 4</span>
+            </div>
+            <div class="list-item">
+                <span class="rank">2</span>
+                <img src="https://image.tmdb.org/t/p/w200/49WJfeN0moxb9IPfGn8AIqMGskD.jpg" class="thumb">
+                <span class="title">Stranger Things 5</span>
+            </div>
+            <div class="list-item">
+                <span class="rank">3</span>
+                <img src="https://image.tmdb.org/t/p/w200/cZ0d3i6Pn8kQxhePZJjvZ7lGej.jpg" class="thumb">
+                <span class="title">The Witcher</span>
+            </div>
+            <div class="list-item">
+                <span class="rank">4</span>
+                <img src="https://image.tmdb.org/t/p/w200/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg" class="thumb">
+                <span class="title">Cyberpunk 2077</span>
+            </div>
+            <div class="list-item">
+                <span class="rank">5</span>
+                <img src="https://image.tmdb.org/t/p/w200/3lBDg3i6Pn8kQxhePZJjvZ7lGej.jpg" class="thumb">
+                <span class="title">Dark</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personality -->
+    <div class="section personality">
+        <div class="icon">🎭</div>
+        <h3>The Sci-Fi Visionary</h3>
+        <p>You love exploring new worlds and future tech. 65% of your time was spent in Sci-Fi.</p>
+    </div>
+
+    <div class="footer">
+        <button class="btn big" (click)="switchToSelection()">Explore Other Years</button>
     </div>
 </div>
 } @else {
