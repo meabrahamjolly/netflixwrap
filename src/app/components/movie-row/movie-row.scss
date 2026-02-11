@@ -1,0 +1,48 @@
+:host {
+    display: block;
+    margin-bottom: 3vw;
+    /* Responsive margin */
+    padding-left: 4%;
+}
+
+.movie-row {
+    position: relative;
+    /* Context for absolute positioning if needed later */
+
+    h2 {
+        color: #e5e5e5;
+        font-size: 1.4vw;
+        /* Responsive font size */
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-block;
+        transition: color 0.3s;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    .row-posters {
+        display: flex;
+        overflow-y: visible;
+        /* Allow hover effects to overflow vertically */
+        overflow-x: scroll;
+        padding: 40px 0;
+        /* Add padding to top/bottom so scaled cards don't get clipped */
+        margin-top: -30px;
+        /* Pull back up to compensate for padding */
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        /* Soft fade edges? Maybe too advanced for simple CSS but looks cool */
+        /* Actually remove mask for now as it might clip the first item */
+
+        /* Hide scrollbar */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: #141414;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #141414;
+    color: #e5e5e5;
+    overflow-x: hidden;
+}
+
+/* Hide Scrollbar globally but allow scrolling */
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+}
+
+.content-container {
+    padding-bottom: 50px;
+    margin-top: -150px;
+    /* Pull content up over the hero gradient */
+    position: relative;
+    z-index: 20;
+    background: linear-gradient(to bottom, transparent 0%, #141414 100px);
+}

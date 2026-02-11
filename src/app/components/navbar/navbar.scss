@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: background-color 0.5s ease;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
+
+  &.scrolled {
+    background-color: #141414;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  height: 68px;
+  font-size: 14px;
+
+  .left-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    color: #e50914;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 40px;
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      &.active a {
+        color: white;
+        font-weight: bold;
+      }
+
+      a {
+        color: #e5e5e5;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #b3b3b3;
+        }
+      }
+    }
+  }
+
+  .right-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+
+    .icon-btn {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2;
+        /* For cleaner lines */
+      }
+    }
+
+    .profile-icon {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 10px;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+      }
+
+      .caret {
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: white transparent transparent transparent;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .nav-links {
+    display: none !important;
+    /* Hamburger menu simplified for now */
+  }
+}

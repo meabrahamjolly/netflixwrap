@@ -1,1 +1,26 @@
-<router-outlet />
+<app-navbar></app-navbar>
+
+@if (featuredMovie$ | async; as featuredMovie) {
+<app-hero [movie]="featuredMovie"></app-hero>
+}
+
+<div class="content-container">
+  @if (trendingMovies$ | async; as trending) {
+  <app-movie-row title="Trending Now" [movies]="trending"></app-movie-row>
+  }
+
+  @if (topRatedMovies$ | async; as topRated) {
+  <app-movie-row title="Top Rated" [movies]="topRated"></app-movie-row>
+  }
+
+  @if (actionMovies$ | async; as action) {
+  <app-movie-row title="Action Thrillers" [movies]="action"></app-movie-row>
+  }
+
+  <!-- Duplicate rows to make it look fuller for the demo -->
+  @if (trendingMovies$ | async; as trending) {
+  <app-movie-row title="Watch It Again" [movies]="trending"></app-movie-row>
+  }
+</div>
+
+<router-outlet></router-outlet>
