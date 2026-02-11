@@ -8,17 +8,44 @@
 }
 
 .hero {
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
+    height: 80vh;
     position: relative;
+    color: white;
+    padding: 0 4%;
+    display: flex;
+    align-items: center; // Vertically center content
+    overflow: hidden;
+
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+
+        .bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #141414 10%, transparent 50%),
+                linear-gradient(to right, #141414 0%, transparent 50%);
+        }
+    }
 
     .hero-content {
-        position: absolute;
-        top: 35%;
-        left: 4%;
+        position: relative;
+        z-index: 1;
         width: 40%;
-        z-index: 10;
+        max-width: 600px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
 
         h1.title {

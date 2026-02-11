@@ -1,6 +1,24 @@
-<div class="story-container" [style.background]="stories[currentIndex()].bg">
+@if (!selectedYear()) {
+<div class="selection-container">
+    <div class="close-selector" (click)="closeSelection()">×</div>
+    <div class="header">
+        <h1>Your Netflix Wrapped</h1>
+        <p>Select a year to rewind.</p>
+    </div>
+
+    <div class="years-grid">
+        @for (item of wrappedData; track item.year) {
+        <div class="year-card" [style.background]="item.themeColor" (click)="selectYear(item.year)">
+            <span class="year-text">{{ item.year }}</span>
+            <span class="label">View Wrap</span>
+        </div>
+        }
+    </div>
+</div>
+} @else {
+<div class="story-container" [style.background]="currentStories()[currentIndex()].bg">
     <div class="progress-bars">
-        @for (story of stories; track story.id; let i = $index) {
+        @for (story of currentStories(); track story.id; let i = $index) {
         <div class="bar-container">
             <div class="bar" [class.active]="i === currentIndex()" [class.completed]="i < currentIndex()"
                 [style.width.%]="i === currentIndex() ? progress() : (i < currentIndex() ? 100 : 0)">
@@ -9,23 +27,24 @@
         }
     </div>
 
-    <div class="close-btn" (click)="close()">×</div>
+    <div class="close-btn" (click)="returnToSelection()">×</div>
 
     <div class="story-content" (click)="next()">
         <div class="tap-area left" (click)="prev(); $event.stopPropagation()"></div>
         <div class="tap-area right" (click)="next(); $event.stopPropagation()"></div>
 
         <div class="content-inner animate-in">
-            <h1>{{ stories[currentIndex()].title }}</h1>
-            <h2>{{ stories[currentIndex()].subtitle }}</h2>
+            <h1>{{ currentStories()[currentIndex()].title }}</h1>
+            <h2>{{ currentStories()[currentIndex()].subtitle }}</h2>
 
-            @if (stories[currentIndex()].description) {
-            <p>{{ stories[currentIndex()].description }}</p>
+            @if (currentStories()[currentIndex()].description) {
+            <p>{{ currentStories()[currentIndex()].description }}</p>
             }
 
-            @if (stories[currentIndex()].image) {
-            <img [src]="stories[currentIndex()].image" class="story-image">
+            @if (currentStories()[currentIndex()].image) {
+            <img [src]="currentStories()[currentIndex()].image" class="story-image">
             }
         </div>
     </div>
 </div>
+}

@@ -17,4 +17,8 @@ export class Hero {
   openDialog() {
     this.dialogService.open(this.movie);
   }
+
+  onImageError(event: any) {
+    event.target.src = 'https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg';
+  }
 }

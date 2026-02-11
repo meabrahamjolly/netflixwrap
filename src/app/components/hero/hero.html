@@ -1,5 +1,8 @@
-<div class="hero"
-    [style.backgroundImage]="'linear-gradient(to top, #141414 10%, transparent 50%), linear-gradient(to right, #141414 0%, transparent 50%), url(' + movie.banner + ')'">
+<div class="hero">
+    <div class="hero-bg">
+        <img [src]="movie.banner" [alt]="movie.title" (error)="onImageError($event)" class="bg-image">
+        <div class="gradient-overlay"></div>
+    </div>
     <div class="hero-content">
         <h1 class="title">{{ movie.title }}</h1>
 
