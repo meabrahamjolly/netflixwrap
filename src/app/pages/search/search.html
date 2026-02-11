@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<div class="search-page">
+    <div class="search-header">
+        @if (query) {
+        <h1>Results for "{{ query }}"</h1>
+        } @else {
+        <h1>Search for movies or shows</h1>
+        }
+    </div>
+
+    @if (isLoading) {
+    <div class="loading">Searching...</div>
+    } @else {
+    <div class="results-grid">
+        @for (movie of results; track movie.id) {
+        <app-movie-card [movie]="movie"></app-movie-card>
+        } @empty {
+        <div class="no-results">
+            <p>Your search for "{{ query }}" did not have any matches.</p>
+            <p>Suggestions:</p>
+            <ul>
+                <li>Try different keywords</li>
+                <li>Looking for a movie or TV show?</li>
+                <li>Try a genre, like comedy, romance, sports, or drama</li>
+            </ul>
+        </div>
+        }
+    </div>
+    }
+</div>

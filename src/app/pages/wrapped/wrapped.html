@@ -118,7 +118,7 @@
                 <h4>Top Movies</h4>
                 <div class="top-list-grid">
                     @for (item of wrappedData[0].topMovies; track item.rank) {
-                    <div class="list-item">
+                    <div class="list-item clickable" (click)="openMovieDetail(item.title, item.image)">
                         <span class="rank">{{ item.rank }}</span>
                         <img [src]="item.image" class="thumb">
                         <span class="title">{{ item.title }}</span>
@@ -132,7 +132,7 @@
                 <h4>Top Series</h4>
                 <div class="top-list-grid">
                     @for (item of wrappedData[0].topSeries; track item.rank) {
-                    <div class="list-item">
+                    <div class="list-item clickable" (click)="openMovieDetail(item.title, item.image)">
                         <span class="rank">{{ item.rank }}</span>
                         <img [src]="item.image" class="thumb">
                         <span class="title">{{ item.title }}</span>

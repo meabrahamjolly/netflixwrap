@@ -74,4 +74,12 @@ export class MovieService {
   getActionMovies(): Observable<Movie[]> {
     return of(this.mockMovies.slice(0, 4));
   }
+
+  searchMovies(query: string): Observable<Movie[]> {
+    const results = this.mockMovies.filter(m =>
+      m.title.toLowerCase().includes(query.toLowerCase()) ||
+      m.description.toLowerCase().includes(query.toLowerCase())
+    );
+    return of(results);
+  }
 }

@@ -673,6 +673,16 @@
                             background: #1e1e1e;
                             padding: 10px 15px;
                             border-radius: 8px;
+                            transition: all 0.2s ease;
+
+                            &.clickable {
+                                cursor: pointer;
+
+                                &:hover {
+                                    background: #333;
+                                    transform: translateX(5px);
+                                }
+                            }
 
                             .rank {
                                 font-size: 1.5rem;

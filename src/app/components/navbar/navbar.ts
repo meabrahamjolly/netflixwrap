@@ -31,9 +31,9 @@ export class Navbar {
   onSearch(event: any) {
     const query = event.target.value;
     if (query && query.trim().length > 0) {
-      console.log('Searching for:', query);
-      // For now, just log or maybe navigate to a search page if we had one
-      // this.router.navigate(['/search'], { queryParams: { q: query } });
+      this.router.navigate(['/search'], { queryParams: { q: query } });
+      // Optionally close the search input after searching
+      // this.isSearchOpen = false;
     }
   }
 

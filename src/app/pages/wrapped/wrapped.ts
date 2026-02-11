@@ -1,5 +1,5 @@
 
-import { Component, signal, OnDestroy, OnInit } from '@angular/core';
+import { Component, signal, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -67,6 +67,9 @@ interface YearData {
   topSeries?: { rank: number; title: string; image: string; }[];
 }
 
+import { DialogService } from '../../services/dialog';
+import { Movie } from '../../services/movie';
+
 @Component({
   selector: 'app-wrapped',
   standalone: true,
@@ -75,6 +78,8 @@ interface YearData {
   styleUrl: './wrapped.scss'
 })
 export class Wrapped implements OnInit, OnDestroy {
+  private dialogService = inject(DialogService);
+
   selectedYear = signal<number | null>(null);
   viewMode = signal<'selection' | 'story' | 'report'>('selection');
   currentStories = signal<Story[]>([]);
@@ -422,5 +427,17 @@ export class Wrapped implements OnInit, OnDestroy {
       this.currentIndex.update(i => i - 1);
       this.startStory();
     }
+  }
+
+  openMovieDetail(title: string, image: string) {
+    // Create a mock movie object from the passed data
+    const movie: Movie = {
+      id: Math.random(), // Just for the modal
+      title: title,
+      thumbnail: image,
+      banner: image,
+      description: 'Find out more about your top title of the year!'
+    };
+    this.dialogService.open(movie);
   }
 }
