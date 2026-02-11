@@ -14,25 +14,49 @@
         </ul>
     </div>
     <div class="right-container">
-        <div class="icon-btn search-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                class="search-svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M13 11C13 13.7614 10.7614 16 8 16C5.23858 16 3 13.7614 3 11C3 8.23858 5.23858 6 8 6C10.7614 6 13 8.23858 13 11ZM14.071 14.071C15.922 12.22 17.071 9.66 17.071 6.828C17.071 3.996 15.922 1.436 14.071 -0.414C12.22 -2.264 9.66 -3.414 6.828 -3.414C3.996 -3.414 1.436 -2.264 -0.414 -0.414C-2.264 1.436 -3.414 3.996 -3.414 6.828C-3.414 9.66 -2.264 12.22 -0.414 14.071C1.436 15.922 3.996 17.071 6.828 17.071C9.66 17.071 12.22 15.922 14.071 14.071ZM17 11C17 15.9706 12.9706 20 8 20C3.02944 20 -1 15.9706 -1 11C-1 6.02944 3.02944 2 8 2C12.9706 2 17 6.02944 17 11Z"
-                    fill="white" />
-                <path d="M17 17L21 21" stroke="white" stroke-width="2" stroke-linecap="square" />
-            </svg>
-        </div>
-        <div class="icon-btn bell-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z"
-                    fill="white" />
-            </svg>
-        </div>
-        <div class="profile-icon">
-            <img src="logo.png " alt="User">
-            <span class="caret"></span>
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+        </svg>
+        <span class="kid-text">Children</span>
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+        </svg>
+
+        <div class="profile-menu" (mouseenter)="isDropdownOpen = true" (mouseleave)="isDropdownOpen = false"
+            (click)="toggleDropdown()">
+            <div class="profile-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="User"
+                    class="profile-img">
+                <span class="caret"></span>
+            </div>
+
+            @if (isDropdownOpen) {
+            <div class="dropdown-menu">
+                <div class="arrow-up"></div>
+                <div class="menu-group">
+                    <div class="menu-item">
+                        <img src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
+                            alt="Kid">
+                        <span>Kids</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="manage-icon">+</span>
+                        <span>Manage Profiles</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="menu-group links">
+                    <a href="#">Account</a>
+                    <a href="#">Help Center</a>
+                </div>
+                <hr>
+                <div class="sign-out" (click)="logout()">
+                    Sign out of Netflix
+                </div>
+            </div>
+            }
         </div>
     </div>
 </nav>

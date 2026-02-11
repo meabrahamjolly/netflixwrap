@@ -1,3 +1,3 @@
-<div class="movie-card">
-    <img [src]="movie.thumbnail" [alt]="movie.title" loading="lazy">
+<div class="card-container" (click)="openDialog()">
+    <img [src]="movie.thumbnail" [alt]="movie.title" (error)="onImageError($event)" loading="lazy">
 </div>

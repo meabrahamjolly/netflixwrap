@@ -1,1 +1,63 @@
-<p>movie-dialog works!</p>
+@if (dialogService.isOpen()) {
+<div class="dialog-overlay" (click)="close()">
+    <div class="dialog-content" (click)="$event.stopPropagation()">
+        <div class="close-btn" (click)="close()">×</div>
+
+        @if (dialogService.currentMovie(); as movie) {
+        <div class="video-container">
+            <!-- Mock Video Element -->
+            <div class="mock-video" [style.backgroundImage]="'url(' + (movie.banner || movie.thumbnail) + ')'">
+                <div class="play-overlay" (click)="play()">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-container">
+            <div class="header">
+                <h2>{{ movie.title }}</h2>
+                <div class="actions">
+                    <button class="play-btn" (click)="play()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 4l15 8-15 8V4z" />
+                        </svg>
+                        Play
+                    </button>
+                    <button class="circle-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                    </button>
+                    <button class="circle-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path
+                                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="meta-row">
+                <span class="match">98% Match</span>
+                <span class="year">2023</span>
+                <span class="age">TV-MA</span>
+                <span class="duration">2h 15m</span>
+                <span class="hd">HD</span>
+            </div>
+
+            <div class="description">
+                <p>{{ movie.description }}</p>
+            </div>
+
+            <div class="more-details">
+                <p><span class="label">Cast:</span> Winona Ryder, David Harbour, Finn Wolfhard</p>
+                <p><span class="label">Genres:</span> Sci-Fi, TV Horror, Teen TV Shows</p>
+                <p><span class="label">This show is:</span> Ominous, Scary, Exciting</p>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

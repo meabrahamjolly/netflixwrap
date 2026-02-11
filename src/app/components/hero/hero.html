@@ -13,19 +13,19 @@
 
         <p class="description">{{ movie.description }}</p>
 
-        <div class="buttons">
-            <button class="play-btn">
+        <div class="hero-buttons">
+            <button class="btn-play" (click)="openDialog()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 4l15 8-15 8V4z" />
                 </svg>
                 Play
             </button>
-            <button class="info-btn">
+            <button class="btn-more" (click)="openDialog()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="16" x2="12" y2="12" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
                 More Info
             </button>

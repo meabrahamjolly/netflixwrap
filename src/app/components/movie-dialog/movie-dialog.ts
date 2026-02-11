@@ -1,7 +1,6 @@
-```typescript
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DialogService } from '../../services/dialog.service';
+import { DialogService } from '../../services/dialog';
 
 @Component({
   selector: 'app-movie-dialog',
@@ -12,14 +11,12 @@ import { DialogService } from '../../services/dialog.service';
 })
 export class MovieDialog {
   dialogService = inject(DialogService);
-  
+
   close() {
     this.dialogService.close();
   }
 
   play() {
-      // Mock play
-      alert('Playing movie...');
+    alert('Playing movie...');
   }
 }
-```
