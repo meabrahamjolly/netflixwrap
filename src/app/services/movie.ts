@@ -24,7 +24,7 @@ export class MovieService {
     {
       id: 2,
       title: 'The Witcher',
-      thumbnail: 'https://image.tmdb.org/t/p/w500/7vjaCdMWasJOacfC1dVCUIK2fQD.jpg',
+      thumbnail: 'https://img.etimg.com/thumb/width-1600,height-900,imgsize-1160551,resizemode-75,msid-109426403/magazines/panache/the-witcher-season-5-confirmed-as-the-last-chapter-by-netflix.jpg',
       description: 'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.'
     },
     {
@@ -36,7 +36,7 @@ export class MovieService {
     {
       id: 4,
       title: 'Black Mirror',
-      thumbnail: 'https://image.tmdb.org/t/p/w500/7Rum2nPOiZK5UaeX3tF1hS5nUbf.jpg',
+      thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS546YkH7AB5hn_hsiFgKuk7wD4vdDhwMwFMg&s',
       description: 'An anthology series exploring a twisted, high-tech multiverse where humanity\'s greatest innovations and darkest instincts collide.'
     },
     {
@@ -48,7 +48,7 @@ export class MovieService {
     {
       id: 6,
       title: 'Dark',
-      thumbnail: 'https://image.tmdb.org/t/p/w500/apbrbWs8M9lyOpJYu5WXRPFufxZ.jpg',
+      thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0ZHZSa2JH6P0MDUjVBJ0iEO5_K1yYjcd3Ow&s',
       description: 'A family saga with a supernatural twist, set in a German town, where the disappearance of two young children exposes the relationships among four families.'
     },
     {

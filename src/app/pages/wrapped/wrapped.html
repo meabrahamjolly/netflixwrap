@@ -1,6 +1,9 @@
 @if (!selectedYear()) {
 <div class="selection-container">
-    <div class="close-selector" (click)="closeSelection()">×</div>
+    <div class="close-selector" (click)="closeSelection()">
+        <span class="icon">×</span>
+        <span class="label">Go to Home</span>
+    </div>
     <div class="header">
         <h1>Your Netflix Wrapped</h1>
         <p>Select a year to rewind.</p>
@@ -37,7 +40,59 @@
             <h1>{{ currentStories()[currentIndex()].title }}</h1>
             <h2>{{ currentStories()[currentIndex()].subtitle }}</h2>
 
-            @if (currentStories()[currentIndex()].description) {
+            @if (currentStories()[currentIndex()].type === 'overview') {
+            <div class="stats-grid overview">
+                @for (stat of currentStories()[currentIndex()].stats; track stat.label) {
+                <div class="stat-item">
+                    <span class="value">{{ stat.value }}</span>
+                    <span class="label">{{ stat.label }}</span>
+                </div>
+                }
+            </div>
+            }
+
+            @if (currentStories()[currentIndex()].type === 'stat') {
+            <div class="stats-grid charts">
+                @if (currentStories()[currentIndex()].chart) {
+                <div class="chart-container">
+                    @for (item of currentStories()[currentIndex()].chart; track item.label) {
+                    <div class="bar-group">
+                        <span class="bar-label">{{ item.label }}</span>
+                        <div class="bar-bg">
+                            <div class="bar-fill" [style.width.%]="item.value" [style.background]="item.color"></div>
+                        </div>
+                        <span class="bar-value">{{ item.value }}%</span>
+                    </div>
+                    }
+                </div>
+                }
+            </div>
+            }
+
+            @if (currentStories()[currentIndex()].type === 'top-list') {
+            <div class="top-list-container">
+                @for (item of currentStories()[currentIndex()].topList; track item.rank) {
+                <div class="list-item">
+                    <span class="rank">{{ item.rank }}</span>
+                    <img [src]="item.image" class="thumb">
+                    <span class="title">{{ item.title }}</span>
+                </div>
+                }
+            </div>
+            }
+
+            @if (currentStories()[currentIndex()].type === 'genre-insight') {
+            <div class="genre-insight-container">
+                <div class="icon">🎭</div>
+                <div class="description-box">
+                    <p>{{ currentStories()[currentIndex()].description }}</p>
+                </div>
+            </div>
+            }
+
+            @if (currentStories()[currentIndex()].description && currentStories()[currentIndex()].type !==
+            'genre-insight' && currentStories()[currentIndex()].type !== 'stat' && currentStories()[currentIndex()].type
+            !== 'overview') {
             <p>{{ currentStories()[currentIndex()].description }}</p>
             }
 

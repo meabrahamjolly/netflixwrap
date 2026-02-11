@@ -18,7 +18,7 @@ export class Login {
     // Mock login - accept any non-empty input
     if (this.email && this.password) {
       localStorage.setItem('netflix_user', JSON.stringify({ email: this.email }));
-      this.router.navigate(['/']);
+      this.router.navigate(['/wrapped']);
     } else {
       alert('Please enter a valid email and password.');
     }
